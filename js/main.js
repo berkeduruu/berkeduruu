@@ -50,6 +50,6 @@
   const revealObserver = new IntersectionObserver(entries => {
     for (const e of entries) if (e.isIntersecting) { e.target.classList.add('is-in'); revealObserver.unobserve(e.target); }
   }, { threshold: 0.12 });
-  document.querySelectorAll('.section-head, .video-pair, .roi-block, .metrics, .flowline, .arch, .lock-steps, .ops, .feature-grid, .geo, .game, .tools, .about-grid, .skills')
+  document.querySelectorAll('.section-head, .video-pair, .roi-block, .metrics, .flowline, .hw-card, .arch, .field, .lock-steps, .ops, .feature-grid, .geo, .game, .tools, .about-grid, .skills')
     .forEach(el => { el.classList.add('reveal'); revealObserver.observe(el); });
 })();

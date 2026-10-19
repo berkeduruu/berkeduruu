@@ -125,6 +125,66 @@
       <p class="section-lede">The whole onboard stack around the detector: camera to TensorRT on a Jetson Orin NX, lock-on and guidance over MAVLink to the flight controller, live video and a two-way data link to the ground station, and the competition server behind it. Pick a flow, or click any block.</p>
     </div>
 
+    <div class="hw" id="hw">
+      <figure class="hw-card hw-plane-card">
+        <svg class="hw-plane" viewBox="0 0 900 420" role="img" aria-label="Top-down cutaway of the fighter UAV showing where the onboard hardware sits">
+          <path class="hw-shape" d="M405,28 L468,28 L490,188 L490,232 L468,392 L405,392 L392,232 L392,188 Z"/>
+          <path class="hw-shape" d="M150,138 L186,138 L198,200 L198,220 L186,282 L150,282 L160,220 L160,200 Z"/>
+          <path class="hw-shape hw-fuselage" d="M130,203 L380,188 L700,180 Q792,186 806,210 Q792,234 700,240 L380,232 L130,217 Z"/>
+          <line class="hw-prop" x1="812" y1="168" x2="812" y2="252"/>
+          <circle class="hw-spinner" cx="808" cy="210" r="6"/>
+          <line class="hw-antenna" x1="262" y1="196" x2="262" y2="150"/>
+          <line class="hw-antenna" x1="282" y1="224" x2="282" y2="270"/>
+          <path class="hw-wire w-video" d="M736,205 H688"/>
+          <path class="hw-wire w-video" d="M598,201 H300"/>
+          <path class="hw-wire w-control" d="M598,219 H472"/>
+          <path class="hw-wire w-control" d="M420,212 H348"/>
+          <g class="hw-part" data-part="cam"><rect x="736" y="196" width="34" height="28" rx="5"/><circle cx="764" cy="210" r="6"/><text x="753" y="185">1</text></g>
+          <g class="hw-part hw-jetson" data-part="jetson"><rect x="598" y="190" width="90" height="40" rx="5"/><text x="643" y="179">2</text></g>
+          <g class="hw-part" data-part="battery"><rect x="498" y="196" width="88" height="28" rx="4"/><text x="542" y="185">3</text></g>
+          <g class="hw-part" data-part="pixhawk"><rect x="420" y="194" width="52" height="32" rx="4"/><text x="446" y="183">4</text></g>
+          <g class="hw-part" data-part="gps"><circle cx="336" cy="210" r="12"/><text x="336" y="186">5</text></g>
+          <g class="hw-part" data-part="radio"><rect x="246" y="198" width="54" height="24" rx="4"/><text x="300" y="250">6</text></g>
+        </svg>
+        <ol class="hw-legend">
+          <li data-part="cam"><b>Camera</b>CSI, 1920×1080 at 60 fps, wide 6 mm lens. 22.2° × 16.8° field of view.</li>
+          <li data-part="jetson"><b>Jetson Orin NX</b>DeepStream graph, YOLO11 on TensorRT, tracker, lock-on and guidance.</li>
+          <li data-part="battery"><b>Battery</b>Flight power, kept near the centre of gravity.</li>
+          <li data-part="pixhawk"><b>Pixhawk · ArduPilot</b>Flies the aircraft; takes reposition and speed commands over MAVLink from USB serial.</li>
+          <li data-part="gps"><b>GPS</b>Position for telemetry, line-of-sight projection and the competition server.</li>
+          <li data-part="radio"><b>Data links ×2</b>Two subnets to the ground: H.264 video on :5425 / :5430 and the JSON data link on :5008.</li>
+        </ol>
+      </figure>
+      <figure class="hw-card hw-board-card">
+        <svg class="hw-board" viewBox="0 0 420 300" role="img" aria-label="Illustration of the NVIDIA Jetson Orin NX on its carrier board">
+          <rect class="pcb" x="16" y="34" width="388" height="236" rx="12"/>
+          <path class="trace" d="M40,70 H80 V250 M60,250 V110 H90 M330,60 H380 V230 M360,250 V200 H320 M120,240 H300"/>
+          <rect class="port" x="6" y="70" width="34" height="28" rx="3"/><rect class="port" x="6" y="108" width="34" height="28" rx="3"/>
+          <rect class="port eth" x="2" y="152" width="40" height="38" rx="3"/>
+          <rect class="port csi" x="150" y="262" width="54" height="10" rx="2"/><rect class="port csi" x="216" y="262" width="54" height="10" rx="2"/>
+          <rect class="som" x="96" y="66" width="230" height="160" rx="8"/>
+          <g class="fins"><path d="M110,82 V210 M122,82 V210 M134,82 V210 M146,82 V210 M274,82 V210 M286,82 V210 M298,82 V210 M310,82 V210"/></g>
+          <circle class="fan-ring" cx="211" cy="146" r="56"/>
+          <g class="fan"><path d="M211,146 C226,118 240,110 248,118 C236,128 226,138 211,146 Z M211,146 C239,152 248,166 241,174 C228,166 218,158 211,146 Z M211,146 C205,174 192,186 182,180 C192,168 200,158 211,146 Z M211,146 C184,140 174,126 180,116 C194,124 202,134 211,146 Z"/></g>
+          <circle class="hub" cx="211" cy="146" r="10"/>
+          <text class="chip-label" x="106" y="60">JETSON ORIN NX</text>
+          <text class="port-label" x="46" y="90">USB</text><text class="port-label" x="46" y="128">USB</text>
+          <text class="port-label" x="48" y="176">NET</text>
+          <text class="port-label" x="160" y="256">CSI 0</text><text class="port-label" x="226" y="256">CSI 1</text>
+          <path class="cable video" d="M177,272 C177,292 120,296 60,296"/>
+          <path class="cable control" d="M6,84 C-10,84 -10,40 30,22"/>
+        </svg>
+        <dl class="hw-specs">
+          <div><dt>Input</dt><dd>1080p · 60 fps</dd></div>
+          <div><dt>Inference</dt><dd>720p · TensorRT</dd></div>
+          <div><dt>Overlay out</dt><dd>640×480 · 59 fps</dd></div>
+          <div><dt>Guidance</dt><dd>10 Hz MAVLink</dd></div>
+          <div><dt>Data link</dt><dd>20 Hz JSON</dd></div>
+          <div><dt>Threads</dt><dd>telemetry · mission · UDP rx/tx · GStreamer</dd></div>
+        </dl>
+      </figure>
+    </div>
+
     <div class="arch">
       <div class="arch-tabs" role="tablist" aria-label="Highlight a flow">
         <button role="tab" class="is-active" data-flow="all">All</button>
@@ -140,6 +200,38 @@
         <p id="arch-info-body">One CSI camera feeds a single GStreamer graph. The same frames are used for detection, for the overlay the pilots watch, and for the recording. The detector's output closes the loop through guidance commands to the autopilot.</p>
       </div>
     </div>
+
+    <div class="field-head">
+      <h3>In the air: one sortie, end to end</h3>
+      <p>A replay of how the system works on the competition field, driven by the rules in our flight and ground-station code: the server shares every team's telemetry, the ground station picks a target and flies the aircraft to a point 25 m behind it, and once the camera has the target the Jetson takes over guidance until the 4-second lock is reported. Air-defence (HSS) zones push the aircraft away with a potential field.</p>
+    </div>
+    <div class="field" id="field">
+      <div class="field-stage">
+        <canvas id="field-canvas" aria-label="Animated top-down simulation of a sortie: target selection, transit, camera lock-on, report and air-defence avoidance"></canvas>
+        <span class="field-speed" id="field-speed">time ×6</span>
+        <ul class="field-log" id="field-log" aria-live="off"></ul>
+      </div>
+      <aside class="field-side">
+        <canvas id="field-cam" class="field-cam" aria-label="Simulated onboard camera view"></canvas>
+        <ol class="field-phases">
+          <li data-phase="standby"><span>4</span>Standby</li>
+          <li data-phase="select"><span>·</span>Select target</li>
+          <li data-phase="transit"><span>0</span>Transit</li>
+          <li data-phase="camera"><span>1</span>YOLO lock</li>
+          <li data-phase="report"><span>·</span>Report</li>
+          <li data-phase="hss"><span>3</span>HSS avoid</li>
+        </ol>
+        <dl class="field-tele">
+          <div><dt>Mode</dt><dd id="ft-mode">–</dd></div>
+          <div><dt>Speed</dt><dd id="ft-speed">–</dd></div>
+          <div><dt>Target</dt><dd id="ft-target">–</dd></div>
+          <div><dt>Range</dt><dd id="ft-range">–</dd></div>
+          <div><dt>Lock</dt><dd id="ft-lock">–</dd></div>
+          <div><dt>Guidance</dt><dd id="ft-guide">–</dd></div>
+        </dl>
+      </aside>
+    </div>
+    <p class="fine">Simulation. Geometry, speeds, distances, field of view and the lock rule come from the flight code; target scores here are a stand-in for the XGBoost model and positions are not real flight data.</p>
 
     <ol class="lock-steps">
       <li><span>Detect</span>YOLO11 on TensorRT, 720p inference branch</li>
@@ -360,6 +452,8 @@
 <script src="js/main.js" defer></script>
 <script src="js/hud.js" defer></script>
 <script src="js/arch.js" defer></script>
+<script src="js/hardware.js" defer></script>
+<script src="js/field.js" defer></script>
 <script src="js/ops.js" defer></script>
 <script src="js/geo.js" defer></script>
 </body>

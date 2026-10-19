@@ -2,6 +2,7 @@
 (() => {
   const root = document.getElementById('hw');
   const select = part => {
+    root.classList.toggle('has-focus', part !== null);
     root.querySelectorAll('[data-part]').forEach(el => el.classList.toggle('is-on', el.dataset.part === part));
   };
   root.querySelectorAll('[data-part]').forEach(el => {

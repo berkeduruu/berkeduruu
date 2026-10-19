@@ -127,24 +127,71 @@
 
     <div class="hw" id="hw">
       <figure class="hw-card hw-plane-card">
-        <svg class="hw-plane" viewBox="0 0 900 420" role="img" aria-label="Top-down cutaway of the fighter UAV showing where the onboard hardware sits">
-          <path class="hw-shape" d="M405,28 L468,28 L490,188 L490,232 L468,392 L405,392 L392,232 L392,188 Z"/>
-          <path class="hw-shape" d="M150,138 L186,138 L198,200 L198,220 L186,282 L150,282 L160,220 L160,200 Z"/>
-          <path class="hw-shape hw-fuselage" d="M130,203 L380,188 L700,180 Q792,186 806,210 Q792,234 700,240 L380,232 L130,217 Z"/>
-          <line class="hw-prop" x1="812" y1="168" x2="812" y2="252"/>
-          <circle class="hw-spinner" cx="808" cy="210" r="6"/>
-          <line class="hw-antenna" x1="262" y1="196" x2="262" y2="150"/>
-          <line class="hw-antenna" x1="282" y1="224" x2="282" y2="270"/>
-          <path class="hw-wire w-video" d="M736,205 H688"/>
-          <path class="hw-wire w-video" d="M598,201 H300"/>
-          <path class="hw-wire w-control" d="M598,219 H472"/>
-          <path class="hw-wire w-control" d="M420,212 H348"/>
-          <g class="hw-part" data-part="cam"><rect x="736" y="196" width="34" height="28" rx="5"/><circle cx="764" cy="210" r="6"/><text x="753" y="185">1</text></g>
-          <g class="hw-part hw-jetson" data-part="jetson"><rect x="598" y="190" width="90" height="40" rx="5"/><text x="643" y="179">2</text></g>
-          <g class="hw-part" data-part="battery"><rect x="498" y="196" width="88" height="28" rx="4"/><text x="542" y="185">3</text></g>
-          <g class="hw-part" data-part="pixhawk"><rect x="420" y="194" width="52" height="32" rx="4"/><text x="446" y="183">4</text></g>
-          <g class="hw-part" data-part="gps"><circle cx="336" cy="210" r="12"/><text x="336" y="186">5</text></g>
-          <g class="hw-part" data-part="radio"><rect x="246" y="198" width="54" height="24" rx="4"/><text x="300" y="250">6</text></g>
+        <svg class="hw-plane" viewBox="0 0 960 440" role="img" aria-label="Top-down cutaway of the fighter UAV showing where the onboard hardware sits">
+          <defs>
+            <linearGradient id="hwBody" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1b2431"/><stop offset=".5" stop-color="#141b25"/><stop offset="1" stop-color="#1b2431"/></linearGradient>
+            <linearGradient id="hwPx" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e6e9ee"/><stop offset="1" stop-color="#b9c0c9"/></linearGradient>
+          </defs>
+          <path class="hw-shape" d="M410,18 L478,18 L506,160 L506,280 L478,422 L410,422 L392,280 L392,160 Z"/>
+          <path class="hw-shape" d="M128,118 L168,118 L184,190 L184,250 L168,322 L128,322 L141,250 L141,190 Z"/>
+          <path class="hw-fuselage" d="M96,206 L300,166 L760,154 Q902,166 914,220 Q902,274 760,286 L300,274 L96,234 Z"/>
+          <line class="hw-prop" x1="924" y1="146" x2="924" y2="294"/>
+          <circle class="hw-spinner" cx="918" cy="220" r="8"/>
+
+          <path class="hw-wire w-video" d="M812,214 H792"/>
+          <path class="hw-wire w-video" d="M640,192 C600,168 320,166 282,190"/>
+          <path class="hw-wire w-control" d="M640,250 C606,276 530,276 496,248"/>
+          <path class="hw-wire w-control" d="M410,220 H380"/>
+
+          <g class="hw-part" data-part="cam">
+            <rect class="hw-pcb" x="812" y="190" width="58" height="60" rx="6"/>
+            <circle class="lens-outer" cx="846" cy="220" r="21"/><circle class="lens-mid" cx="846" cy="220" r="13"/><circle class="lens-glass" cx="846" cy="220" r="6"/>
+            <circle class="lens-glint" cx="842" cy="216" r="2"/>
+            <rect class="ribbon" x="802" y="206" width="12" height="28" rx="1"/>
+          </g>
+          <g class="hw-part" data-part="jetson">
+            <rect class="jet-body" x="640" y="176" width="152" height="88" rx="8"/>
+            <path class="jet-fins" d="M652,186 V254 M661,186 V254 M670,186 V254 M762,186 V254 M771,186 V254 M780,186 V254"/>
+            <circle class="jet-fan-ring" cx="716" cy="220" r="30"/>
+            <g class="jet-fan"><path d="M716,220 C724,205 732,201 736,205 C730,211 724,216 716,220 Z M716,220 C731,223 736,231 732,235 C725,231 720,226 716,220 Z M716,220 C713,235 706,241 700,238 C705,231 710,226 716,220 Z M716,220 C701,217 696,209 699,204 C707,208 712,214 716,220 Z"/></g>
+            <circle class="jet-hub" cx="716" cy="220" r="5"/>
+          </g>
+          <g class="hw-part" data-part="battery">
+            <rect class="bat-body" x="518" y="186" width="108" height="68" rx="9"/>
+            <rect class="bat-label" x="530" y="200" width="70" height="40" rx="4"/>
+            <text class="bat-text" x="565" y="225">LiPo</text>
+            <rect class="bat-cap" x="606" y="198" width="10" height="44" rx="3"/>
+            <path class="lead-red" d="M626,206 C636,206 636,198 640,198"/><path class="lead-black" d="M626,234 C636,234 636,242 640,242"/>
+          </g>
+          <g class="hw-part" data-part="pixhawk">
+            <rect class="px-body" x="408" y="182" width="88" height="76" rx="11"/>
+            <rect class="px-top" x="418" y="192" width="68" height="56" rx="7"/>
+            <path class="px-arrow" d="M434,220 H468 M458,210 L470,220 L458,230"/>
+            <circle class="px-led" cx="428" cy="202" r="3"/>
+            <path class="px-ports" d="M412,192 V248"/>
+          </g>
+          <g class="hw-part" data-part="gps">
+            <circle class="gps-mast" cx="352" cy="220" r="30"/>
+            <circle class="gps-puck" cx="352" cy="220" r="24"/>
+            <path class="gps-arrow" d="M340,220 H364 M357,213 L365,220 L357,227"/>
+            <circle class="gps-led" cx="352" cy="206" r="2.5"/>
+          </g>
+          <g class="hw-part" data-part="radio">
+            <rect class="radio-body" x="206" y="180" width="76" height="32" rx="5"/>
+            <rect class="radio-body" x="206" y="228" width="76" height="32" rx="5"/>
+            <path class="radio-vents" d="M216,190 H252 M216,197 H252 M216,204 H252 M216,238 H252 M216,245 H252 M216,252 H252"/>
+            <circle class="radio-led" cx="270" cy="196" r="3"/><circle class="radio-led" cx="270" cy="244" r="3"/>
+            <path class="hw-antenna" d="M226,180 V136 M226,136 l-6,-8 M226,136 l6,-8 M246,260 V304 M246,304 l-6,8 M246,304 l6,8"/>
+          </g>
+
+          <g class="hw-nums">
+            <g><circle cx="846" cy="168" r="11"/><text x="846" y="172">1</text></g>
+            <g><circle cx="716" cy="160" r="11"/><text x="716" y="164">2</text></g>
+            <g><circle cx="572" cy="300" r="11"/><text x="572" y="304">3</text></g>
+            <g><circle cx="452" cy="160" r="11"/><text x="452" y="164">4</text></g>
+            <g><circle cx="352" cy="282" r="11"/><text x="352" y="286">5</text></g>
+            <g><circle cx="282" cy="160" r="11"/><text x="282" y="164">6</text></g>
+          </g>
         </svg>
         <ol class="hw-legend">
           <li data-part="cam"><b>Camera</b>CSI, 1920×1080 at 60 fps, wide 6 mm lens. 22.2° × 16.8° field of view.</li>

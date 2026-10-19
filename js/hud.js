@@ -30,8 +30,11 @@
     return { x: a[1] + (b[1] - a[1]) * k + wob, y: a[2] + (b[2] - a[2]) * k + wob * 0.8, s: a[3] + (b[3] - a[3]) * k };
   }
 
+  const rollAt = t => Math.sin(t * 0.45) * 0.14 + Math.sin(t * 1.3) * 0.02;
+  const headingAt = t => (274 + Math.sin(t * 0.45) * 14 + 360) % 360;
+
   function drawWorld(t) {
-    const roll = Math.sin(t * 0.45) * 0.14 + Math.sin(t * 1.3) * 0.02;
+    const roll = rollAt(t);
     const horizon = H * (0.62 + Math.sin(t * 0.3) * 0.04);
     ctx.save();
     ctx.translate(W / 2, horizon);
@@ -76,6 +79,48 @@
     ctx.lineTo(-1.5, 10); ctx.lineTo(1, 10); ctx.lineTo(4, 1.2); ctx.closePath();
     ctx.fill(); ctx.stroke();
     ctx.restore();
+  }
+
+  // Heading tape (bottom centre) and bank scale (above the crosshair), drawn faintly like a real HUD.
+  function drawAttitude(t, k) {
+    const hdg = headingAt(t), roll = rollAt(t);
+    const tw = Math.min(250, W * 0.42), tx = W / 2 - tw / 2, ty = H - 62, th = 22, pxPerDeg = tw / 60;
+    ctx.save();
+    ctx.beginPath(); ctx.rect(tx, ty, tw, th); ctx.clip();
+    ctx.fillStyle = 'rgba(0, 0, 0, .35)'; ctx.fillRect(tx, ty, tw, th);
+    ctx.strokeStyle = 'rgba(231, 237, 244, .55)'; ctx.fillStyle = 'rgba(231, 237, 244, .75)';
+    ctx.font = `600 ${Math.max(9, 10 * Math.min(1.2, k))}px "JetBrains Mono", monospace`; ctx.textAlign = 'center';
+    for (let d = Math.floor(hdg - 32); d <= hdg + 32; d++) {
+      if (d % 5) continue;
+      const x = W / 2 + (d - hdg) * pxPerDeg, major = d % 10 === 0;
+      ctx.beginPath(); ctx.moveTo(x, ty); ctx.lineTo(x, ty + (major ? 7 : 4)); ctx.stroke();
+      if (d % 30 === 0) {
+        const v = ((d % 360) + 360) % 360;
+        ctx.fillText({ 0: 'N', 90: 'E', 180: 'S', 270: 'W' }[v] ?? String(v / 10).padStart(2, '0'), x, ty + th - 3);
+      }
+    }
+    ctx.restore();
+    ctx.fillStyle = '#3be0c4';
+    ctx.beginPath(); ctx.moveTo(W / 2 - 5, ty - 6); ctx.lineTo(W / 2 + 5, ty - 6); ctx.lineTo(W / 2, ty + 1); ctx.closePath(); ctx.fill();
+    label(`${hdg.toFixed(0).padStart(3, '0')}°`, W / 2 - 14, ty - 9, '#3be0c4', Math.max(10, Math.round(11 * Math.min(1.2, k))));
+
+    // bank scale
+    const r = H * 0.2, cx = W / 2, cy = H / 2;
+    ctx.strokeStyle = 'rgba(231, 237, 244, .4)'; ctx.lineWidth = 1;
+    for (const a of [-45, -30, -20, -10, 0, 10, 20, 30, 45]) {
+      const rad = (a - 90) * Math.PI / 180, len = a % 30 === 0 ? 8 : 5;
+      ctx.beginPath();
+      ctx.moveTo(cx + Math.cos(rad) * r, cy + Math.sin(rad) * r);
+      ctx.lineTo(cx + Math.cos(rad) * (r - len), cy + Math.sin(rad) * (r - len));
+      ctx.stroke();
+    }
+    const pr = -roll - Math.PI / 2;
+    ctx.fillStyle = 'rgba(231, 237, 244, .8)';
+    ctx.beginPath();
+    ctx.moveTo(cx + Math.cos(pr) * (r - 10), cy + Math.sin(pr) * (r - 10));
+    ctx.lineTo(cx + Math.cos(pr + 0.04) * (r - 18), cy + Math.sin(pr + 0.04) * (r - 18));
+    ctx.lineTo(cx + Math.cos(pr - 0.04) * (r - 18), cy + Math.sin(pr - 0.04) * (r - 18));
+    ctx.closePath(); ctx.fill();
   }
 
   function label(text, x, y, color, size = 12) {
@@ -158,12 +203,23 @@
       ctx.fillStyle = 'rgba(0, 0, 0, .6)'; ctx.fillRect(bx, by, bw, 6);
       ctx.fillStyle = confirmed ? '#45d97e' : '#ffd84a'; ctx.fillRect(bx, by, bw * lockTime / LOCK_NEEDED, 6);
     }
-    if (confirmed) label('POST /api/kilitlenme_bilgisi → 200', 14, H - 18 - fs - 10, '#3be0c4', fs);
+    if (confirmed) label('POST /api/kilitlenme_bilgisi → 200', 14, y + fs + 22, '#3be0c4', fs);
 
-    // telemetry
+    drawAttitude(t, k);
+
+    // telemetry, and the steering the line of sight asks for (22.2° × 16.8° camera)
     const alt = 142 + Math.sin(t * 0.7) * 6, spd = detected ? 25 - (coverage - 2.6) / 4.2 * 12 : 22;
-    const hdg = (274 + Math.sin(t * 0.45) * 14 + 360) % 360;
-    label(`ALT ${alt.toFixed(0)} m  SPD ${spd.toFixed(1)} m/s  HDG ${hdg.toFixed(0)}°`, 14, H - 14, '#cfd8e2', fs);
+    label(`ALT ${alt.toFixed(0)} m  SPD ${spd.toFixed(1)} m/s`, 14, H - 14, '#cfd8e2', fs);
+    if (detected) {
+      const turn = (px - W / 2) / W * 22.2, climb = (H / 2 - py) / H * 16.8;
+      const cmd = `CMD ${turn >= 0 ? 'R' : 'L'} ${Math.abs(turn).toFixed(1)}°  ${climb >= 0 ? 'UP' : 'DN'} ${Math.abs(climb).toFixed(1)}°`;
+      ctx.font = `600 ${fs}px "JetBrains Mono", monospace`;
+      label(cmd, W - 18 - ctx.measureText(cmd).width, H - 14, '#3be0c4', fs);
+      // chevron beside the crosshair pointing the way the aircraft is being turned
+      const dir = Math.sign(turn) || 1, gx = W / 2 + dir * (c + 8);
+      ctx.strokeStyle = '#3be0c4'; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(gx, H / 2 - 5); ctx.lineTo(gx + dir * 5, H / 2); ctx.lineTo(gx, H / 2 + 5); ctx.stroke();
+    }
 
     if (!reduceMotion && visible) requestAnimationFrame(frame);
   }

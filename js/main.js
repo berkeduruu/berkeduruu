@@ -33,12 +33,12 @@
     for (const e of entries) {
       if (!e.isIntersecting) continue;
       countObserver.unobserve(e.target);
-      const el = e.target, target = parseFloat(el.dataset.count);
+      const el = e.target, target = parseFloat(el.dataset.count), dec = el.dataset.dec ? +el.dataset.dec : 3;
       if (reduceMotion) continue;
       const t0 = performance.now(), dur = 1400;
       const tick = now => {
         const k = Math.min(1, (now - t0) / dur), eased = 1 - Math.pow(1 - k, 3);
-        el.textContent = (target * eased).toFixed(3);
+        el.textContent = (target * eased).toFixed(dec);
         if (k < 1) requestAnimationFrame(tick);
       };
       requestAnimationFrame(tick);
@@ -50,6 +50,6 @@
   const revealObserver = new IntersectionObserver(entries => {
     for (const e of entries) if (e.isIntersecting) { e.target.classList.add('is-in'); revealObserver.unobserve(e.target); }
   }, { threshold: 0.12 });
-  document.querySelectorAll('.section-head, .video-pair, .roi-block, .metrics, .flowline, .hw-card, .arch, .field, .lock-steps, .ops, .feature-grid, .geo, .game, .tools, .about-grid, .skills')
+  document.querySelectorAll('.section-head, .video-pair, .roi-block, .metrics, .flowline, .hw-card, .arch, .field, .lock-steps, .pos, .pos-stats, .ui-tour, .feature-grid, .geo, .game, .tools, .about-grid, .skills')
     .forEach(el => { el.classList.add('reveal'); revealObserver.observe(el); });
 })();

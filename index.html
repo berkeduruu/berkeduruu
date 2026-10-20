@@ -302,49 +302,67 @@
   <section id="ops" class="section">
     <div class="section-head">
       <p class="kicker"><span>03</span> Operations Platform</p>
-      <h2>Integrated printing &amp; document services platform</h2>
-      <p class="section-lede">September 2026 · JavaScript, Firebase, Cloudflare. One system for a printing business, from the moment a customer sends a file to the moment it is printed. Orders from the counter, the web and mobile, WhatsApp and e-mail all land in the same queue. Every workstation sees the same state live.</p>
+      <h2>PrintOS: the operating system of a print shop</h2>
+      <p class="section-lede">2026 · Node.js, Windows desktop app, PostgreSQL, pdf.js / pdf-lib, LLM agents, PWA. One system for a working print shop. Orders come in at the counter, over WhatsApp, by e-mail and from a mobile app, and every one ends up in the same order and cash records. The kiosk, design desk, cashier and admin screens share that state live over the shop network. Files are prepared and printed on each workstation, with checks that keep a job from being printed twice or with the wrong settings.</p>
     </div>
 
-    <div class="ops" id="ops-board">
-      <div class="ops-top">
-        <div class="ops-live"><i></i>Live · 4 workstations in sync</div>
-        <div class="ops-roles">
-          <span data-role="service">Customer service <b>0</b></span>
-          <span data-role="prep">Document prep <b>0</b></span>
-          <span data-role="cashier">Cashier <b>0</b></span>
-          <span data-role="admin">Admin <b>0</b></span>
+    <div class="pos" id="pos" data-chapter="-1">
+      <div class="pos-stage">
+        <svg id="pos-svg" viewBox="0 0 960 600" role="img" aria-label="Animated diagram of PrintOS: four order channels feed one shop center, which keeps the Kiosk, Design desk, Cashier and Admin workstations in sync, and workstations send prepared jobs to the printers."></svg>
+        <div class="pos-title" aria-hidden="true">
+          <span class="pos-title-mark">PrintOS</span>
+          <span class="pos-title-sub">4 channels · 4 workstations · 1 center</span>
         </div>
       </div>
-      <div class="ops-body">
-        <div class="ops-channels">
-          <p class="ops-col-title">Channels</p>
-          <div class="ops-ch" data-ch="counter"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10h18v10H3zM5 10V6h14v4M8 14h8"/></svg>In-store</div>
-          <div class="ops-ch" data-ch="web"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>Web / mobile</div>
-          <div class="ops-ch" data-ch="whatsapp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.5-4A8 8 0 1 1 8 18.5z"/></svg>WhatsApp</div>
-          <div class="ops-ch" data-ch="email"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>E-mail</div>
+      <div class="pos-side">
+        <ol class="pos-steps" id="pos-steps"></ol>
+        <div class="pos-panel">
+          <p class="pos-kicker" id="pos-kicker"></p>
+          <h3 id="pos-heading"></h3>
+          <p id="pos-text"></p>
+          <div class="pos-screen" id="pos-screen" aria-live="off"></div>
         </div>
-        <div class="ops-lanes-scroll">
-          <div class="ops-lanes">
-            <div class="ops-lane"><p class="ops-col-title">Intake</p><div class="ops-stack"></div></div>
-            <div class="ops-lane"><p class="ops-col-title">Document prep</p><div class="ops-stack"></div></div>
-            <div class="ops-lane"><p class="ops-col-title">Pricing</p><div class="ops-stack"></div></div>
-            <div class="ops-lane"><p class="ops-col-title">Payment</p><div class="ops-stack"></div></div>
-            <div class="ops-lane"><p class="ops-col-title">Production</p><div class="ops-stack"></div></div>
-            <div class="ops-lane"><p class="ops-col-title">Dispatch</p><div class="ops-stack"></div></div>
+      </div>
+    </div>
+
+    <ul class="pos-stats" aria-label="Project figures">
+      <li><b data-count="4" data-dec="0">4</b><span>order channels: store, WhatsApp, e-mail, mobile</span></li>
+      <li><b data-count="4" data-dec="0">4</b><span>role screens working on the same live data</span></li>
+      <li><b data-count="10" data-dec="0">10</b><span>print-safety rules checked before anything is printed</span></li>
+      <li><b><span data-count="1100" data-dec="0">1100</span>+</b><span>automated tests, plus packaged-build checks</span></li>
+    </ul>
+
+    <div class="ui-tour" id="ui-tour">
+      <div class="ui-head">
+        <p class="pos-sub">Interface tour</p>
+        <p class="ui-head-note">Rebuilt from the real screens, labels translated to English</p>
+      </div>
+      <nav class="ui-tabs" aria-label="PrintOS screens"></nav>
+      <div class="ui-viewport">
+        <div class="ui-win">
+          <div class="ui-bar">
+            <span class="ui-dots"><i></i><i></i><i></i></span>
+            <span class="ui-wtitle">PrintOS</span>
           </div>
+          <div class="ui-stage"></div>
+          <div class="ui-cursor" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 2l15 11-6.5 1.2L16.6 21l-3 1.4-3.4-6.9L5 20z"/></svg></div>
         </div>
       </div>
-      <ul class="ops-log" aria-live="off"></ul>
+      <div class="ui-cap" aria-live="polite">
+        <p class="ui-cap-role"></p>
+        <h3 class="ui-cap-title"></h3>
+        <p class="ui-cap-text"></p>
+        <ul class="ui-cap-chips"></ul>
+      </div>
     </div>
 
     <div class="feature-grid">
-      <div><h3>One intake</h3><p>Files and requests from every channel become the same kind of order, with the customer attached.</p></div>
-      <div><h3>Central catalogue</h3><p>Products and pricing rules live in one place. Preparation, pricing and the cashier all read the same numbers.</p></div>
-      <div><h3>Payments tracked</h3><p>Every order carries its payment state from quote to paid, so nothing is printed or handed over by mistake.</p></div>
-      <div><h3>Synced stations</h3><p>Customer service, document prep, cashier and admin work on the same live data, each with its own view.</p></div>
+      <div><h3>AI order desk</h3><p>An LLM agent reads WhatsApp messages and files, asks for whatever is missing and gets the customer to confirm a priced summary. Large jobs and unclear requests go to staff.</p></div>
+      <div><h3>Published catalogue</h3><p>Admin edits products and prices as a draft. Only a checked, published package reaches the workstations, so kiosk, design desk and cashier all use the same numbers.</p></div>
+      <div><h3>PDF toolkit</h3><p>Select, reorder, repeat, rotate, crop and 1/2/4-up layout, front/back merge and Office-to-PDF conversion, with previews that match what will be printed.</p></div>
+      <div><h3>Mobile wallet</h3><p>Customers prepare files on their phone and pay from a balance loaded at the shop. Checkout is one atomic step, so a dropped connection never charges twice.</p></div>
     </div>
-    <p class="fine">The board above is an illustration of the workflow. Real customer data and the business's screens are kept private.</p>
+    <p class="fine">The diagram and the interface tour are illustrations of the real workflow and screens. Customer data, the business's name and its screens are kept private.</p>
   </section>
 
   <!-- 04 GEO -->
@@ -501,7 +519,8 @@
 <script src="js/arch.js" defer></script>
 <script src="js/hardware.js" defer></script>
 <script src="js/field.js" defer></script>
-<script src="js/ops.js" defer></script>
+<script src="js/pos.js" defer></script>
+<script src="js/ui.js" defer></script>
 <script src="js/geo.js" defer></script>
 </body>
 </html>

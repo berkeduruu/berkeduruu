@@ -1,5 +1,6 @@
 // Shared page behaviour: active nav link, in-view video playback, metric count-up, reveal on scroll.
 (() => {
+  document.documentElement.classList.add('js');
   const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   // Highlight the nav link of the section in view.

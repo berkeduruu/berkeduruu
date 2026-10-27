@@ -11,9 +11,16 @@
   const NS = 'http://www.w3.org/2000/svg';
   const STEP_MS = 4600, PIN_MS = 1400;
 
-  const res = await fetch('assets/data/gaziemir.json');
-  if (!res.ok) throw new Error(`gaziemir.json: ${res.status}`);
-  const data = await res.json();
+  let data = window.GAZIEMIR || null;
+  if (!data) {
+    try {
+      const res = await fetch('assets/data/gaziemir.json');
+      if (!res.ok) throw new Error(`gaziemir.json: ${res.status}`);
+      data = await res.json();
+    } catch {
+      return; // no data, no walkthrough: the panel keeps its step list empty rather than throwing
+    }
+  }
   const oldCount = data.old.length, newCount = data.new.length;
   const coords = data.new.map(n => n.ll);
   const fmt = ([lat, lon]) => `${lat.toFixed(5)}, ${lon.toFixed(5)}`;

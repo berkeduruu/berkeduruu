@@ -11,10 +11,11 @@
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Geologica:wght,CRSV,SHRP@200..500,0,0..100&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+<a class="skip" href="#top">Skip to content</a>
 
 <header class="topbar">
   <a class="brand" href="#top" aria-label="Berke Duru, back to top"><span class="brand-mark">BD</span><span class="brand-name">Berke Duru</span></a>
@@ -27,7 +28,7 @@
     <a href="#tools">Tools</a>
     <a href="#about">About</a>
   </nav>
-  <a class="btn btn-small" href="assets/Berke_Duru_CV.pdf" download>CV</a>
+  <a class="cv-link" href="assets/Berke_Duru_CV.pdf" download>CV</a>
 </header>
 
 <main id="top">
@@ -35,10 +36,10 @@
   <!-- HERO -->
   <section class="hero">
     <div class="hero-text">
-      <p class="eyebrow">Computer Engineer · İzmir, Turkey</p>
       <h1>Berke Duru</h1>
+      <p class="byline">Computer Engineer · İzmir, Turkey</p>
       <p class="lede">I build computer vision that runs on the aircraft, software that runs a business, and games that run in the browser.</p>
-      <p class="hero-sub">Computer Engineering graduate of Yaşar University, now on a fully funded master's in Computer Engineering. Real-time detection and autonomy on NVIDIA Jetson, integrated workflow platforms, geospatial analysis and Unity/web game development.</p>
+      <p class="hero-sub">Computer Engineering graduate of Yaşar University, now on a fully funded master’s in Computer Engineering. Real-time detection and autonomy on NVIDIA Jetson, integrated workflow platforms, geospatial analysis and Unity/web game development.</p>
       <div class="hero-cta">
         <a class="btn" href="assets/Berke_Duru_CV.pdf" download>Download CV</a>
         <a class="btn btn-ghost" href="https://github.com/berkeduruu" target="_blank" rel="noopener">GitHub</a>
@@ -47,7 +48,9 @@
       </div>
     </div>
     <figure class="hero-hud">
-      <canvas id="hud" aria-label="Animated simulation of the onboard lock-on overlay: a target aircraft is detected, tracked inside the lock zone for four seconds and confirmed."></canvas>
+      <div class="tick-frame">
+        <canvas id="hud" aria-label="Animated simulation of the onboard lock-on overlay: a target aircraft is detected, tracked inside the lock zone for four seconds and confirmed."></canvas>
+      </div>
       <figcaption>Simulated onboard overlay, modelled on the real OSD: detection, ROI tracking, 4-second lock rule.</figcaption>
     </figure>
   </section>
@@ -59,11 +62,12 @@
     <li><strong>0.973 mAP50</strong><span>aircraft detector, YOLO11</span></li>
   </ul>
 
+  <ol class="flow" role="list">
   <!-- 01 UAV -->
-  <section id="uav" class="section">
+  <li id="uav" class="section">
     <div class="section-head">
-      <p class="kicker"><span>01</span> UAV &amp; Computer Vision</p>
       <h2>TEKNOFEST Fighter UAV</h2>
+      <p class="section-cat">UAV &amp; Computer Vision</p>
       <p class="section-lede">Anafarta UAV Team · May 2025 – Aug 2026. I owned the aircraft-detection workflow end to end: dataset preparation, annotation, YOLO training and evaluation, then real-time deployment on the Jetson that flies inside the aircraft.</p>
     </div>
 
@@ -105,7 +109,7 @@
       <div class="metric"><span class="metric-val" data-count="0.946">0.946</span><span class="metric-label">Recall</span></div>
       <div class="metric"><span class="metric-val" data-count="0.973">0.973</span><span class="metric-label">mAP50</span></div>
       <div class="metric"><span class="metric-val" data-count="0.719">0.719</span><span class="metric-label">mAP50-95</span></div>
-      <p class="metric-note">Custom YOLO11-N / YOLO11-S, 300 epochs on our own fixed-wing dataset. <a href="https://github.com/berkeduruu/yolo-aircraft-detection" target="_blank" rel="noopener">Model repo →</a></p>
+      <p class="metric-note">Custom YOLO11-N / YOLO11-S, 300 epochs on our own fixed-wing dataset. <a href="https://github.com/berkeduruu/yolo-aircraft-detection" target="_blank" rel="noopener">Model repo</a></p>
     </div>
 
     <div class="flowline" aria-label="Dataset to deployment workflow">
@@ -115,13 +119,13 @@
       <a class="flow-step" href="https://github.com/berkeduruu/yolo-aircraft-detection" target="_blank" rel="noopener"><span class="flow-n">4</span><span class="flow-t">Export</span><span class="flow-s">ONNX → TensorRT</span></a>
       <a class="flow-step" href="https://github.com/berkeduruu/jetson-deepstream-yolo-pipelines" target="_blank" rel="noopener"><span class="flow-n">5</span><span class="flow-t">Fly it</span><span class="flow-s">DeepStream on Jetson</span></a>
     </div>
-  </section>
+  </li>
 
   <!-- 02 EDGE -->
-  <section id="edge" class="section">
+  <li id="edge" class="section">
     <div class="section-head">
-      <p class="kicker"><span>02</span> Edge AI System</p>
       <h2>How the aircraft sees, decides and reports</h2>
+      <p class="section-cat">Edge AI System</p>
       <p class="section-lede">The whole onboard stack around the detector: camera to TensorRT on a Jetson Orin NX, lock-on and guidance over MAVLink to the flight controller, live video and a two-way data link to the ground station, and the competition server behind it. Pick a flow, or click any block.</p>
     </div>
 
@@ -227,7 +231,7 @@
           <div><dt>Overlay out</dt><dd>640×480 · 59 fps</dd></div>
           <div><dt>Guidance</dt><dd>10 Hz MAVLink</dd></div>
           <div><dt>Data link</dt><dd>20 Hz JSON</dd></div>
-          <div><dt>Threads</dt><dd>telemetry · mission · UDP rx/tx · GStreamer</dd></div>
+          <div><dt>Threads</dt><dd>telemetry, mission, UDP rx/tx, GStreamer</dd></div>
         </dl>
       </figure>
     </div>
@@ -235,22 +239,22 @@
     <div class="arch">
       <div class="arch-tabs" role="tablist" aria-label="Highlight a flow">
         <button role="tab" class="is-active" data-flow="all">All</button>
-        <button role="tab" data-flow="video"><i class="dot dot-video"></i>Video path</button>
-        <button role="tab" data-flow="control"><i class="dot dot-control"></i>Control loop</button>
-        <button role="tab" data-flow="mission"><i class="dot dot-mission"></i>Mission &amp; server</button>
+        <button role="tab" data-flow="video">Video path</button>
+        <button role="tab" data-flow="control">Control loop</button>
+        <button role="tab" data-flow="mission">Mission &amp; server</button>
       </div>
       <div class="arch-scroll">
         <svg id="arch-svg" viewBox="0 0 1200 720" role="img" aria-label="System architecture diagram of the onboard and ground software"></svg>
       </div>
       <div class="arch-info" aria-live="polite">
         <h3 id="arch-info-title">The onboard loop</h3>
-        <p id="arch-info-body">One CSI camera feeds a single GStreamer graph. The same frames are used for detection, for the overlay the pilots watch, and for the recording. The detector's output closes the loop through guidance commands to the autopilot.</p>
+        <p id="arch-info-body">One CSI camera feeds a single GStreamer graph. The same frames are used for detection, for the overlay the pilots watch, and for the recording. The detector’s output closes the loop through guidance commands to the autopilot.</p>
       </div>
     </div>
 
     <div class="field-head">
       <h3>In the air: one sortie, end to end</h3>
-      <p>A replay of how the system works on the competition field, driven by the rules in our flight and ground-station code: the server shares every team's telemetry, the ground station picks a target and flies the aircraft to a point 25 m behind it, and once the camera has the target the Jetson takes over guidance until the 4-second lock is reported. Air-defence (HSS) zones push the aircraft away with a potential field.</p>
+      <p>A replay of how the system works on the competition field, driven by the rules in our flight and ground-station code: the server shares every team’s telemetry, the ground station picks a target and flies the aircraft to a point 25 m behind it, and once the camera has the target the Jetson takes over guidance until the 4-second lock is reported. Air-defence (HSS) zones push the aircraft away with a potential field.</p>
     </div>
     <div class="field" id="field">
       <div class="field-stage">
@@ -291,18 +295,18 @@
 
     <div class="pill-row">
       <span class="pill">20 pipeline variants</span>
-      <span class="pill">Solo · dual YOLO · ensemble S+N</span>
+      <span class="pill">Solo, dual YOLO, ensemble S+N</span>
       <span class="pill">Valve: inference on/off in flight</span>
       <span class="pill">Orin NX (NVENC) · Orin Nano Super (x264)</span>
-      <a class="pill pill-link" href="https://github.com/berkeduruu/jetson-deepstream-yolo-pipelines" target="_blank" rel="noopener">Pipeline templates repo →</a>
+      <a class="pill pill-link" href="https://github.com/berkeduruu/jetson-deepstream-yolo-pipelines" target="_blank" rel="noopener">Pipeline templates repo</a>
     </div>
-  </section>
+  </li>
 
   <!-- 03 OPS -->
-  <section id="ops" class="section">
+  <li id="ops" class="section">
     <div class="section-head">
-      <p class="kicker"><span>03</span> Operations Platform</p>
       <h2>PrintOS: the operating system of a print shop</h2>
+      <p class="section-cat">Operations Platform</p>
       <p class="section-lede">2026 · Node.js, Windows desktop app, PostgreSQL, pdf.js / pdf-lib, LLM agents, PWA. One system for a working print shop. Orders come in at the counter, over WhatsApp, by e-mail and from a mobile app, and every one ends up in the same order and cash records. The kiosk, design desk, cashier and admin screens share that state live over the shop network. Files are prepared and printed on each workstation, with checks that keep a job from being printed twice or with the wrong settings.</p>
     </div>
 
@@ -311,7 +315,7 @@
         <svg id="pos-svg" viewBox="0 0 960 600" role="img" aria-label="Animated diagram of PrintOS: four order channels feed one shop center, which keeps the Kiosk, Design desk, Cashier and Admin workstations in sync, and workstations send prepared jobs to the printers."></svg>
         <div class="pos-title" aria-hidden="true">
           <span class="pos-title-mark">PrintOS</span>
-          <span class="pos-title-sub">4 channels · 4 workstations · 1 center</span>
+          <span class="pos-title-sub">4 channels, 4 workstations, 1 center</span>
         </div>
       </div>
       <div class="pos-side">
@@ -340,10 +344,7 @@
       <nav class="ui-tabs" aria-label="PrintOS screens"></nav>
       <div class="ui-viewport">
         <div class="ui-win">
-          <div class="ui-bar">
-            <span class="ui-dots"><i></i><i></i><i></i></span>
-            <span class="ui-wtitle">PrintOS</span>
-          </div>
+          <span class="ui-wtitle visually-hidden">PrintOS</span>
           <div class="ui-stage"></div>
           <div class="ui-cursor" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 2l15 11-6.5 1.2L16.6 21l-3 1.4-3.4-6.9L5 20z"/></svg></div>
         </div>
@@ -362,14 +363,14 @@
       <div><h3>PDF toolkit</h3><p>Select, reorder, repeat, rotate, crop and 1/2/4-up layout, front/back merge and Office-to-PDF conversion, with previews that match what will be printed.</p></div>
       <div><h3>Mobile wallet</h3><p>Customers prepare files on their phone and pay from a balance loaded at the shop. Checkout is one atomic step, so a dropped connection never charges twice.</p></div>
     </div>
-    <p class="fine">The diagram and the interface tour are illustrations of the real workflow and screens. Customer data, the business's name and its screens are kept private.</p>
-  </section>
+    <p class="fine">The diagram and the interface tour are illustrations of the real workflow and screens. Customer data, the business’s name and its screens are kept private.</p>
+  </li>
 
   <!-- 04 GEO -->
-  <section id="geo" class="section">
+  <li id="geo" class="section">
     <div class="section-head">
-      <p class="kicker"><span>04</span> Geo-AI · Internship</p>
       <h2>Finding new construction from map data</h2>
+      <p class="section-cat">Geo-AI · Internship</p>
       <p class="section-lede">İzmir Innovation and Technology Inc., Directorate of AI &amp; Smart City Technologies · Jul – Aug 2025. A pipeline that compares building footprints from two dates, finds structures that appeared in between and turns each one into coordinates for a parcel check. Below it runs on the real data from the project, a part of Gaziemir.</p>
     </div>
 
@@ -387,14 +388,14 @@
         </div>
       </div>
     </div>
-    <p class="fine">Python, Selenium, Overpass API, QGIS / PyQGIS, OpenCV, pyproj. "New" means present in the 2025 footprints and missing in 2022: a candidate for checking, not a verdict. <a href="https://github.com/berkeduruu/Kacak-Yapi-Izmir" target="_blank" rel="noopener">Repository →</a></p>
-  </section>
+    <p class="fine">Python, Selenium, Overpass API, QGIS / PyQGIS, OpenCV, pyproj. “New” means present in the 2025 footprints and missing in 2022: a candidate for checking, not a verdict. <a href="https://github.com/berkeduruu/Kacak-Yapi-Izmir" target="_blank" rel="noopener">Repository</a></p>
+  </li>
 
   <!-- 05 GAMES -->
-  <section id="games" class="section">
+  <li id="games" class="section">
     <div class="section-head">
-      <p class="kicker"><span>05</span> Games</p>
       <h2>Browser games</h2>
+      <p class="section-cat">Games</p>
       <p class="section-lede">Complete games built for web portals: game feel, progression, saves, touch and gamepad input, and platform SDKs for leaderboards and ads. The clips below were recorded from the games themselves.</p>
     </div>
 
@@ -436,13 +437,13 @@
         </div>
       </article>
     </div>
-  </section>
+  </li>
 
   <!-- 06 TOOLS -->
-  <section id="tools" class="section section-tight">
+  <li id="tools" class="section section-tight">
     <div class="section-head">
-      <p class="kicker"><span>06</span> Tools</p>
       <h2>Small tools I use myself</h2>
+      <p class="section-cat">Tools</p>
     </div>
     <div class="tools">
       <a class="tool" href="https://github.com/berkeduruu/clipfort" target="_blank" rel="noopener"><img src="assets/img/tool-clipfort.webp" alt="ClipFort clipboard history window" loading="lazy" width="518" height="457"><span class="tool-name">ClipFort</span><span class="tool-desc">Clipboard manager and AES-256-GCM vault. Tauri v2, Rust, Svelte.</span></a>
@@ -451,13 +452,13 @@
       <a class="tool" href="https://github.com/berkeduruu/Video-Frame-Grabber" target="_blank" rel="noopener"><img src="assets/img/tool-framegrabber.webp" alt="Video Frame Grabber application window" loading="lazy" width="1271" height="1067"><span class="tool-name">Video Frame Grabber</span><span class="tool-desc">Frame extraction for datasets. PyQt6, OpenCV.</span></a>
       <a class="tool" href="https://github.com/berkeduruu/yolo-annotation-tool" target="_blank" rel="noopener"><img src="assets/img/tool-annotator.webp" alt="YOLO Annotation Tool interface" loading="lazy" width="1280" height="820"><span class="tool-name">YOLO Annotation Tool</span><span class="tool-desc">Model pre-labelling with manual correction. PyQt6, Ultralytics.</span></a>
     </div>
-  </section>
+  </li>
 
   <!-- 07 ABOUT -->
-  <section id="about" class="section">
+  <li id="about" class="section">
     <div class="section-head">
-      <p class="kicker"><span>07</span> About</p>
       <h2>Background</h2>
+      <p class="section-cat">About</p>
     </div>
     <div class="about-grid">
       <div class="about-col">
@@ -470,12 +471,12 @@
         </div>
         <h3 class="col-title">Education</h3>
         <div class="entry">
-          <p class="entry-meta">2026 – present · 100% scholarship</p>
+          <p class="entry-meta">2026 – present, 100% scholarship</p>
           <h4>MSc Computer Engineering (thesis)</h4>
           <p class="entry-org">Yaşar University, İzmir</p>
         </div>
         <div class="entry">
-          <p class="entry-meta">2022 – 2026 · GPA 3.31 / 4.00 · 75% scholarship</p>
+          <p class="entry-meta">2022 – 2026, GPA 3.31 / 4.00, 75% scholarship</p>
           <h4>BSc Computer Engineering</h4>
           <p class="entry-org">Yaşar University, İzmir</p>
         </div>
@@ -491,28 +492,34 @@
       </div>
     </div>
     <div class="skills">
-      <div><h4>Languages</h4><p>Python · C · C++ · C# · JavaScript · TypeScript</p></div>
-      <div><h4>AI &amp; vision</h4><p>PyTorch · TensorFlow · Ultralytics YOLO · OpenCV · TensorRT · ONNX · CUDA · scikit-learn</p></div>
-      <div><h4>Edge &amp; autonomy</h4><p>NVIDIA Jetson · JetPack · DeepStream · GStreamer · ArduPilot · MAVLink · ROS · Gazebo</p></div>
-      <div><h4>Apps &amp; systems</h4><p>Firebase · Cloudflare · Docker · Linux · TCP/IP · UDP · RTSP · SQL · PyQt · QGIS</p></div>
-      <div><h4>Games &amp; XR</h4><p>Unity · OpenXR · XR Interaction Toolkit · Three.js · Canvas</p></div>
+      <div><h4>Languages</h4><p>Python, C, C++, C#, JavaScript, TypeScript</p></div>
+      <div><h4>AI &amp; vision</h4><p>PyTorch, TensorFlow, Ultralytics YOLO, OpenCV, TensorRT, ONNX, CUDA, scikit-learn</p></div>
+      <div><h4>Edge &amp; autonomy</h4><p>NVIDIA Jetson, JetPack, DeepStream, GStreamer, ArduPilot, MAVLink, ROS, Gazebo</p></div>
+      <div><h4>Apps &amp; systems</h4><p>Firebase, Cloudflare, Docker, Linux, TCP/IP, UDP, RTSP, SQL, PyQt, QGIS</p></div>
+      <div><h4>Games &amp; XR</h4><p>Unity, OpenXR, XR Interaction Toolkit, Three.js, Canvas</p></div>
       <div><h4>Spoken</h4><p>English (B2)</p></div>
     </div>
-  </section>
+  </li>
+  </ol>
 
   <section class="contact" id="contact">
-    <h2>Let's talk</h2>
+    <h2>Let’s talk</h2>
     <p>Open to roles in application development, computer vision and intelligent systems.</p>
     <div class="hero-cta">
       <a class="btn" href="mailto:berkeduruu@gmail.com">berkeduruu@gmail.com</a>
       <a class="btn btn-ghost" href="https://www.linkedin.com/in/berke-duru-940114347/" target="_blank" rel="noopener">LinkedIn</a>
       <a class="btn btn-ghost" href="https://github.com/berkeduruu" target="_blank" rel="noopener">GitHub</a>
-      <a class="btn btn-ghost" href="assets/Berke_Duru_CV.pdf" download>CV (PDF)</a>
+      <a class="btn btn-ghost" href="assets/Berke_Duru_CV.pdf" download>CV (pdf)</a>
     </div>
   </section>
 </main>
 
-<footer class="footer">© 2026 Berke Duru</footer>
+<footer class="footer">
+  <div class="footer-row">
+    <span class="footer-mark">Berke Duru</span>
+    <span>© 2026 Berke Duru</span>
+  </div>
+</footer>
 
 <script src="js/main.js" defer></script>
 <script src="js/hud.js" defer></script>
@@ -521,6 +528,7 @@
 <script src="js/field.js" defer></script>
 <script src="js/pos.js" defer></script>
 <script src="js/ui.js" defer></script>
+<script src="assets/data/gaziemir-data.js" defer></script>
 <script src="js/geo.js" defer></script>
 </body>
 </html>

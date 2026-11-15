@@ -133,7 +133,7 @@
     <div class="section-head">
       <h2>Colab Station: a media studio on a rented GPU</h2>
       <p class="section-cat">GPU Studio · Generative AI</p>
-      <p class="section-lede">2026 · Python (aiohttp), React / TypeScript, ComfyUI, SQLite, Google Colab L4, MCP. A private production studio for images, video, 3D models, music, speech and transcription. A small server on a VDS owns the queue and the money side: it starts a Colab GPU only when a job arrives, runs the job in ComfyUI, hands the file back and shuts the GPU down when it goes idle. It has two front doors: a chat-style web UI and an MCP server that lets Claude Code generate media from any project.</p>
+      <p class="section-lede">2026 · Python (aiohttp), React / TypeScript, ComfyUI, SQLite, Google Colab L4, MCP. An open-source studio for images, video with sound, 3D models, music, speech, voice cloning and transcription. A small server on a VDS owns the queue and the money side: it starts a Colab GPU only when a job arrives, runs the job in ComfyUI, hands the file back and shuts the GPU down when it goes idle. It has two front doors: a chat-style web UI and an MCP server that lets Claude Code generate media from any project.</p>
     </div>
 
     <div class="pos" id="cs" data-chapter="-1">
@@ -155,6 +155,21 @@
       </div>
     </div>
 
+    <div class="video-pair studio-videos">
+      <figure class="media-card">
+        <video controls playsinline preload="none" poster="assets/img/colab-linkedin-poster.jpg">
+          <source src="assets/video/colab-linkedin.mp4" type="video/mp4">
+        </video>
+        <figcaption><strong>The studio, in use.</strong> Image, video with sound, 3D, music, speech and transcription, all recorded from the running app. Narrated and captioned in Turkish.</figcaption>
+      </figure>
+      <figure class="media-card">
+        <video controls playsinline preload="none" poster="assets/img/colab-kredi-poster.jpg">
+          <source src="assets/video/colab-kredi.mp4" type="video/mp4">
+        </video>
+        <figcaption><strong>Why a rented GPU, and the Claude part.</strong> Colab’s monthly L4 hours, a one-command install, and Claude Code generating and downloading an image through MCP. Narrated and captioned in Turkish.</figcaption>
+      </figure>
+    </div>
+
     <ul class="pos-stats" aria-label="Project figures">
       <li><b data-count="7" data-dec="0">7</b><span>generation modes behind one queue: image, prompt help, video, music, speech, transcription, 3D</span></li>
       <li><b data-count="1.8" data-dec="1">1.8</b><span>minutes from “no GPU” to a ready ComfyUI, down from 4.8 after measuring every step</span></li>
@@ -168,7 +183,12 @@
       <div><h3>Fail fast, never silently</h3><p>Jobs that would measurably exceed 30 minutes are rejected up front. A model download with no new bytes for 10 minutes, a dead ComfyUI or a dropped websocket ends the job with a clear error instead of a hung “running”.</p></div>
       <div><h3>Measured, and reproducible</h3><p>Python 3.13 and torch come from a lock file, ComfyUI is pinned to a commit and the wheel archive is checked by sha256. Time estimates come from learned per-node timings on the real L4, not guesses.</p></div>
     </div>
-    <p class="fine">The diagram and job IDs are illustrations of the real workflow. The studio runs behind a login and the repository is private, so there is no public link; figures are from my own measurements on the L4.</p>
+    <div class="pill-row">
+      <span class="pill">AGPL-3.0</span>
+      <span class="pill">ComfyUI · Colab L4</span>
+      <a class="pill pill-link" href="https://github.com/berkeduruu/colab-studio" target="_blank" rel="noopener">colab-studio on GitHub</a>
+    </div>
+    <p class="fine">The diagram and its job IDs are illustrations of the real workflow; the clips above come from the app itself. Figures are from my own measurements on the L4.</p>
   </li>
 
   <!-- 03 UAV -->

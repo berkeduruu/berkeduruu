@@ -272,6 +272,8 @@ button:disabled, button[aria-disabled="true"] { opacity: .55; cursor: not-allowe
 }
 .video-pair { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--gap-columns); }
 .video-pair video { aspect-ratio: 4 / 3; object-fit: cover; }
+.studio-videos { margin-bottom: var(--space-xl); }
+.studio-videos video { aspect-ratio: 16 / 9; object-fit: contain; }
 
 .roi-block {
   display: grid;

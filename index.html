@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Berke Duru — Computer Engineer</title>
-  <meta name="description" content="Portfolio of Berke Duru: computer vision and autonomous UAV systems on NVIDIA Jetson, integrated business software, geospatial AI and web games.">
+  <meta name="description" content="Portfolio of Berke Duru: integrated business software, a generative-media GPU studio, computer vision and autonomous UAV systems on NVIDIA Jetson, geospatial AI and web games.">
   <meta property="og:title" content="Berke Duru — Computer Engineer">
-  <meta property="og:description" content="Computer vision, autonomous UAV systems, integrated software and games.">
+  <meta property="og:description" content="Business software, a GPU media studio, computer vision, autonomous UAV systems and games.">
   <meta property="og:image" content="assets/img/og.jpg">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,9 +20,10 @@
 <header class="topbar">
   <a class="brand" href="#top" aria-label="Berke Duru, back to top"><span class="brand-mark">BD</span><span class="brand-name">Berke Duru</span></a>
   <nav class="topnav" aria-label="Sections">
+    <a href="#ops">Operations Platform</a>
+    <a href="#studio">GPU Studio</a>
     <a href="#uav">UAV &amp; Vision</a>
     <a href="#edge">Edge AI System</a>
-    <a href="#ops">Operations Platform</a>
     <a href="#geo">Geo-AI</a>
     <a href="#games">Games</a>
     <a href="#tools">Tools</a>
@@ -38,8 +39,8 @@
     <div class="hero-text">
       <h1>Berke Duru</h1>
       <p class="byline">Computer Engineer · İzmir, Turkey</p>
-      <p class="lede">I build computer vision that runs on the aircraft, software that runs a business, and games that run in the browser.</p>
-      <p class="hero-sub">Computer Engineering graduate of Yaşar University, now on a fully funded master’s in Computer Engineering. Real-time detection and autonomy on NVIDIA Jetson, integrated workflow platforms, geospatial analysis and Unity/web game development.</p>
+      <p class="lede">I build software that runs a business, a studio that generates media on a rented GPU, computer vision that runs on the aircraft, and games that run in the browser.</p>
+      <p class="hero-sub">Computer Engineering graduate of Yaşar University, now on a fully funded master’s in Computer Engineering. Integrated workflow platforms, generative-media pipelines on GPUs, real-time detection and autonomy on NVIDIA Jetson, geospatial analysis and Unity/web game development.</p>
       <div class="hero-cta">
         <a class="btn" href="assets/Berke_Duru_CV.pdf" download>Download CV</a>
         <a class="btn btn-ghost" href="https://github.com/berkeduruu" target="_blank" rel="noopener">GitHub</a>
@@ -63,7 +64,114 @@
   </ul>
 
   <ol class="flow" role="list">
-  <!-- 01 UAV -->
+  <!-- 01 OPS -->
+  <li id="ops" class="section">
+    <div class="section-head">
+      <h2>PrintOS: the operating system of a print shop</h2>
+      <p class="section-cat">Operations Platform</p>
+      <p class="section-lede">2026 · Node.js, Windows desktop app, PostgreSQL, pdf.js / pdf-lib, LLM agents, PWA. One system for a working print shop. Orders come in at the counter, over WhatsApp, by e-mail and from a mobile app, and every one ends up in the same order and cash records. The kiosk, design desk, cashier and admin screens share that state live over the shop network. Files are prepared and printed on each workstation, with checks that keep a job from being printed twice or with the wrong settings.</p>
+    </div>
+
+    <div class="pos" id="pos" data-chapter="-1">
+      <div class="pos-stage">
+        <svg id="pos-svg" viewBox="0 0 960 600" role="img" aria-label="Animated diagram of PrintOS: four order channels feed one shop center, which keeps the Kiosk, Design desk, Cashier and Admin workstations in sync, and workstations send prepared jobs to the printers."></svg>
+        <div class="pos-title" aria-hidden="true">
+          <span class="pos-title-mark">PrintOS</span>
+          <span class="pos-title-sub">4 channels, 4 workstations, 1 center</span>
+        </div>
+      </div>
+      <div class="pos-side">
+        <ol class="pos-steps" id="pos-steps"></ol>
+        <div class="pos-panel">
+          <p class="pos-kicker" id="pos-kicker"></p>
+          <h3 id="pos-heading"></h3>
+          <p id="pos-text"></p>
+          <div class="pos-screen" id="pos-screen" aria-live="off"></div>
+        </div>
+      </div>
+    </div>
+
+    <ul class="pos-stats" aria-label="Project figures">
+      <li><b data-count="4" data-dec="0">4</b><span>order channels: store, WhatsApp, e-mail, mobile</span></li>
+      <li><b data-count="4" data-dec="0">4</b><span>role screens working on the same live data</span></li>
+      <li><b data-count="10" data-dec="0">10</b><span>print-safety rules checked before anything is printed</span></li>
+      <li><b><span data-count="1100" data-dec="0">1100</span>+</b><span>automated tests, plus packaged-build checks</span></li>
+    </ul>
+
+    <div class="ui-tour" id="ui-tour">
+      <div class="ui-head">
+        <p class="pos-sub">Interface tour</p>
+        <p class="ui-head-note">Rebuilt from the real screens, labels translated to English</p>
+      </div>
+      <nav class="ui-tabs" aria-label="PrintOS screens"></nav>
+      <div class="ui-viewport">
+        <div class="ui-win">
+          <span class="ui-wtitle visually-hidden">PrintOS</span>
+          <div class="ui-stage"></div>
+          <div class="ui-cursor" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 2l15 11-6.5 1.2L16.6 21l-3 1.4-3.4-6.9L5 20z"/></svg></div>
+        </div>
+      </div>
+      <div class="ui-cap" aria-live="polite">
+        <p class="ui-cap-role"></p>
+        <h3 class="ui-cap-title"></h3>
+        <p class="ui-cap-text"></p>
+        <ul class="ui-cap-chips"></ul>
+      </div>
+    </div>
+
+    <div class="feature-grid">
+      <div><h3>AI order desk</h3><p>An LLM agent reads WhatsApp messages and files, asks for whatever is missing and gets the customer to confirm a priced summary. Large jobs and unclear requests go to staff.</p></div>
+      <div><h3>Published catalogue</h3><p>Admin edits products and prices as a draft. Only a checked, published package reaches the workstations, so kiosk, design desk and cashier all use the same numbers.</p></div>
+      <div><h3>PDF toolkit</h3><p>Select, reorder, repeat, rotate, crop and 1/2/4-up layout, front/back merge and Office-to-PDF conversion, with previews that match what will be printed.</p></div>
+      <div><h3>Mobile wallet</h3><p>Customers prepare files on their phone and pay from a balance loaded at the shop. Checkout is one atomic step, so a dropped connection never charges twice.</p></div>
+    </div>
+    <p class="fine">The diagram and the interface tour are illustrations of the real workflow and screens. Customer data, the business’s name and its screens are kept private.</p>
+  </li>
+
+  <!-- 02 STUDIO -->
+  <li id="studio" class="section">
+    <div class="section-head">
+      <h2>Colab Station: a media studio on a rented GPU</h2>
+      <p class="section-cat">GPU Studio · Generative AI</p>
+      <p class="section-lede">2026 · Python (aiohttp), React / TypeScript, ComfyUI, SQLite, Google Colab L4, MCP. A private production studio for images, video, 3D models, music, speech and transcription. A small server on a VDS owns the queue and the money side: it starts a Colab GPU only when a job arrives, runs the job in ComfyUI, hands the file back and shuts the GPU down when it goes idle. It has two front doors: a chat-style web UI and an MCP server that lets Claude Code generate media from any project.</p>
+    </div>
+
+    <div class="pos" id="cs" data-chapter="-1">
+      <div class="pos-stage">
+        <svg id="cs-svg" viewBox="0 0 960 600" role="img" aria-label="Animated diagram of Colab Station: the studio chat and Claude Code send jobs to one station server on a VDS, which starts a Colab L4 GPU running ComfyUI, pulls model packs from Hugging Face, stores the outputs and a watchdog shuts the GPU down when idle."></svg>
+        <div class="pos-title" aria-hidden="true">
+          <span class="pos-title-mark">Colab Station</span>
+          <span class="pos-title-sub">2 front doors, 1 queue, 1 GPU that sleeps</span>
+        </div>
+      </div>
+      <div class="pos-side">
+        <ol class="pos-steps" id="cs-steps"></ol>
+        <div class="pos-panel">
+          <p class="pos-kicker" id="cs-kicker"></p>
+          <h3 id="cs-heading"></h3>
+          <p id="cs-text"></p>
+          <div class="pos-screen" id="cs-screen" aria-live="off"></div>
+        </div>
+      </div>
+    </div>
+
+    <ul class="pos-stats" aria-label="Project figures">
+      <li><b data-count="7" data-dec="0">7</b><span>generation modes behind one queue: image, prompt help, video, music, speech, transcription, 3D</span></li>
+      <li><b data-count="1.8" data-dec="1">1.8</b><span>minutes from “no GPU” to a ready ComfyUI, down from 4.8 after measuring every step</span></li>
+      <li><b data-count="75" data-dec="0">75</b><span>seconds to the first speech job, down from 230 by pre-fetching its models</span></li>
+      <li><b data-count="5" data-dec="0">5</b><span>seconds to UV-unwrap a 3D model, down from over 100 with a JIT fix</span></li>
+    </ul>
+
+    <div class="feature-grid">
+      <div><h3>Two front doors, one queue</h3><p>The web studio is a dark, chat-style UI with threads, presets, a 3D viewer and live progress. The MCP server exposes the same jobs as tools, so Claude Code can generate an image, a clip or a model for a project and get a file URL back.</p></div>
+      <div><h3>A GPU that costs money only while working</h3><p>The runtime starts on the first job, watches credits, stops after 15 idle minutes and is shut down when the service itself stops. A job cancelled while the GPU boots does not leave it running.</p></div>
+      <div><h3>Fail fast, never silently</h3><p>Jobs that would measurably exceed 30 minutes are rejected up front. A model download with no new bytes for 10 minutes, a dead ComfyUI or a dropped websocket ends the job with a clear error instead of a hung “running”.</p></div>
+      <div><h3>Measured, and reproducible</h3><p>Python 3.13 and torch come from a lock file, ComfyUI is pinned to a commit and the wheel archive is checked by sha256. Time estimates come from learned per-node timings on the real L4, not guesses.</p></div>
+    </div>
+    <p class="fine">The diagram and job IDs are illustrations of the real workflow. The studio runs behind a login and the repository is private, so there is no public link; figures are from my own measurements on the L4.</p>
+  </li>
+
+  <!-- 03 UAV -->
   <li id="uav" class="section">
     <div class="section-head">
       <h2>TEKNOFEST Fighter UAV</h2>
@@ -121,7 +229,7 @@
     </div>
   </li>
 
-  <!-- 02 EDGE -->
+  <!-- 04 EDGE -->
   <li id="edge" class="section">
     <div class="section-head">
       <h2>How the aircraft sees, decides and reports</h2>
@@ -302,71 +410,7 @@
     </div>
   </li>
 
-  <!-- 03 OPS -->
-  <li id="ops" class="section">
-    <div class="section-head">
-      <h2>PrintOS: the operating system of a print shop</h2>
-      <p class="section-cat">Operations Platform</p>
-      <p class="section-lede">2026 · Node.js, Windows desktop app, PostgreSQL, pdf.js / pdf-lib, LLM agents, PWA. One system for a working print shop. Orders come in at the counter, over WhatsApp, by e-mail and from a mobile app, and every one ends up in the same order and cash records. The kiosk, design desk, cashier and admin screens share that state live over the shop network. Files are prepared and printed on each workstation, with checks that keep a job from being printed twice or with the wrong settings.</p>
-    </div>
-
-    <div class="pos" id="pos" data-chapter="-1">
-      <div class="pos-stage">
-        <svg id="pos-svg" viewBox="0 0 960 600" role="img" aria-label="Animated diagram of PrintOS: four order channels feed one shop center, which keeps the Kiosk, Design desk, Cashier and Admin workstations in sync, and workstations send prepared jobs to the printers."></svg>
-        <div class="pos-title" aria-hidden="true">
-          <span class="pos-title-mark">PrintOS</span>
-          <span class="pos-title-sub">4 channels, 4 workstations, 1 center</span>
-        </div>
-      </div>
-      <div class="pos-side">
-        <ol class="pos-steps" id="pos-steps"></ol>
-        <div class="pos-panel">
-          <p class="pos-kicker" id="pos-kicker"></p>
-          <h3 id="pos-heading"></h3>
-          <p id="pos-text"></p>
-          <div class="pos-screen" id="pos-screen" aria-live="off"></div>
-        </div>
-      </div>
-    </div>
-
-    <ul class="pos-stats" aria-label="Project figures">
-      <li><b data-count="4" data-dec="0">4</b><span>order channels: store, WhatsApp, e-mail, mobile</span></li>
-      <li><b data-count="4" data-dec="0">4</b><span>role screens working on the same live data</span></li>
-      <li><b data-count="10" data-dec="0">10</b><span>print-safety rules checked before anything is printed</span></li>
-      <li><b><span data-count="1100" data-dec="0">1100</span>+</b><span>automated tests, plus packaged-build checks</span></li>
-    </ul>
-
-    <div class="ui-tour" id="ui-tour">
-      <div class="ui-head">
-        <p class="pos-sub">Interface tour</p>
-        <p class="ui-head-note">Rebuilt from the real screens, labels translated to English</p>
-      </div>
-      <nav class="ui-tabs" aria-label="PrintOS screens"></nav>
-      <div class="ui-viewport">
-        <div class="ui-win">
-          <span class="ui-wtitle visually-hidden">PrintOS</span>
-          <div class="ui-stage"></div>
-          <div class="ui-cursor" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 2l15 11-6.5 1.2L16.6 21l-3 1.4-3.4-6.9L5 20z"/></svg></div>
-        </div>
-      </div>
-      <div class="ui-cap" aria-live="polite">
-        <p class="ui-cap-role"></p>
-        <h3 class="ui-cap-title"></h3>
-        <p class="ui-cap-text"></p>
-        <ul class="ui-cap-chips"></ul>
-      </div>
-    </div>
-
-    <div class="feature-grid">
-      <div><h3>AI order desk</h3><p>An LLM agent reads WhatsApp messages and files, asks for whatever is missing and gets the customer to confirm a priced summary. Large jobs and unclear requests go to staff.</p></div>
-      <div><h3>Published catalogue</h3><p>Admin edits products and prices as a draft. Only a checked, published package reaches the workstations, so kiosk, design desk and cashier all use the same numbers.</p></div>
-      <div><h3>PDF toolkit</h3><p>Select, reorder, repeat, rotate, crop and 1/2/4-up layout, front/back merge and Office-to-PDF conversion, with previews that match what will be printed.</p></div>
-      <div><h3>Mobile wallet</h3><p>Customers prepare files on their phone and pay from a balance loaded at the shop. Checkout is one atomic step, so a dropped connection never charges twice.</p></div>
-    </div>
-    <p class="fine">The diagram and the interface tour are illustrations of the real workflow and screens. Customer data, the business’s name and its screens are kept private.</p>
-  </li>
-
-  <!-- 04 GEO -->
+  <!-- 05 GEO -->
   <li id="geo" class="section">
     <div class="section-head">
       <h2>Finding new construction from map data</h2>
@@ -391,7 +435,7 @@
     <p class="fine">Python, Selenium, Overpass API, QGIS / PyQGIS, OpenCV, pyproj. “New” means present in the 2025 footprints and missing in 2022: a candidate for checking, not a verdict. <a href="https://github.com/berkeduruu/Kacak-Yapi-Izmir" target="_blank" rel="noopener">Repository</a></p>
   </li>
 
-  <!-- 05 GAMES -->
+  <!-- 06 GAMES -->
   <li id="games" class="section">
     <div class="section-head">
       <h2>Browser games</h2>
@@ -439,7 +483,7 @@
     </div>
   </li>
 
-  <!-- 06 TOOLS -->
+  <!-- 07 TOOLS -->
   <li id="tools" class="section section-tight">
     <div class="section-head">
       <h2>Small tools I use myself</h2>
@@ -454,7 +498,7 @@
     </div>
   </li>
 
-  <!-- 07 ABOUT -->
+  <!-- 08 ABOUT -->
   <li id="about" class="section">
     <div class="section-head">
       <h2>Background</h2>
@@ -527,6 +571,7 @@
 <script src="js/hardware.js" defer></script>
 <script src="js/field.js" defer></script>
 <script src="js/pos.js" defer></script>
+<script src="js/colab.js" defer></script>
 <script src="js/ui.js" defer></script>
 <script src="assets/data/gaziemir-data.js" defer></script>
 <script src="js/geo.js" defer></script>

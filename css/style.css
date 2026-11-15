@@ -15,7 +15,7 @@
 /* Hallmark · waive 72 · the flagged run is the tools rail's cut card at the scroll edge, the rail's own design · every other element holds the 16px phone gutter */
 /* Hallmark · waive 80 · the stage plots the project's own change-detection output as a map of real Gaziemir footprints · named in the SVG's aria-label */
 /* Hallmark · waive 82 · each pin plots one real detected structure at its coordinates on the map · the count is also set in type in the badge and the step text */
-/* Hallmark · dismissed 77 · the counter reads only <section> elements; the seven numbered sections are an ordered list (a real <ol> with counters) · hero, seven, close, footer are all present */
+/* Hallmark · dismissed 77 · the counter reads only <section> elements; the eight numbered sections are an ordered list (a real <ol> with counters) · hero, eight, close, footer are all present */
 /* Hallmark · dismissed F19 · the 600 and 700 weights live inside the rebuilt PrintOS sample, the app's own bold UI · the page itself runs three weights, 200 300 400 */
 /* Hallmark · dismissed F20 · the 2+1 last row is the simulated kiosk's own product grid · the page's own grids leave no orphan */
 /* Hallmark · dismissed 40 · the contrast pairs flagged sit inside the rebuilt PrintOS sample, the real app's own palette · page chrome passes */
@@ -603,7 +603,7 @@ button:disabled, button[aria-disabled="true"] { opacity: .55; cursor: not-allowe
   background: var(--canvas-ink);
   border: var(--rule-hair) solid var(--color-rule);
 }
-#pos-svg { width: 100%; height: auto; }
+#pos-svg, #cs-svg { width: 100%; height: auto; }
 .pos-grid { display: none; }
 
 .pos-link-base { fill: none; stroke: var(--color-rule-2); stroke-width: 1.6; }
@@ -744,6 +744,8 @@ button:disabled, button[aria-disabled="true"] { opacity: .55; cursor: not-allowe
 
 .ps-price { display: grid; gap: var(--space-2xs); }
 .ps-file-row { display: grid; grid-template-columns: 82px 1fr 44px; gap: var(--space-xs); align-items: center; font: 400 12.5px var(--font-code); color: var(--color-muted); }
+#cs .ps-file-row { grid-template-columns: 82px 1fr 78px; }
+#cs .ps-file-row b { white-space: nowrap; }
 .ps-file-row i { height: 8px; border-radius: 1px; background: var(--color-rule); position: relative; overflow: hidden; }
 .js .ps-file-row i::after { content: ""; position: absolute; inset: 0 auto 0 0; width: var(--w, 0%); background: var(--flow-control); border-radius: 1px; opacity: 0; transition: opacity .4s .2s var(--ease-out); }
 .ps-file-row.in i::after { opacity: 1; }

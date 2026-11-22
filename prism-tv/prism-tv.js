@@ -7,6 +7,7 @@
   var PLATFORMS = [
     { key: 'android-arm64', label: 'Android · arm64', note: 'Telefon ve Google TV (64 bit)' },
     { key: 'android-arm', label: 'Android · armeabi-v7a', note: '32 bit TV ve eski cihazlar' },
+    { key: 'android-universal', label: 'Android · evrensel', note: 'Hangisini seçeceğini bilmiyorsan (büyük dosya)' },
     { key: 'windows-x64', label: 'Windows', note: 'ZIP, x64' },
     { key: 'linux-x64', label: 'Linux', note: 'tar.gz, x64' },
   ];

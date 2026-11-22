@@ -67,6 +67,7 @@
     $('pt-hint').textContent = primary === 'android-arm64'
       ? 'Onvo Apollo gibi 32 bit TV’ler için armeabi-v7a dosyasını seç.' : '';
     fillNotes($('pt-latest-notes'), r.notes);
+    $('pt-notes-title').hidden = !(r.notes && r.notes.length);
     $('pt-latest').hidden = false;
     $('pt-install').hidden = false;
     $('pt-lead').textContent = 'Güncel sürüm v' + r.version + '. Dosyayı indir, kur; uygulama kendi güncellemelerini de buradan kontrol eder.';

@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prism IPTV — Sürümler</title>
+  <meta name="description" content="Prism IPTV indirme ve sürüm notları.">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geologica:wght,CRSV,SHRP@200..500,0,0..100&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/prism-tv/prism-tv.css">
+</head>
+<body>
+<main class="pt-wrap" id="top">
+  <header class="pt-head">
+    <p class="pt-eyebrow">Prism IPTV</p>
+    <h1>Sürümler</h1>
+    <p class="lead" id="pt-lead">Sürüm bilgisi yükleniyor…</p>
+  </header>
+
+  <section id="pt-latest" class="pt-latest" aria-live="polite" hidden>
+    <div class="pt-latest-top">
+      <h2 id="pt-latest-title"></h2>
+      <p class="pt-meta num" id="pt-latest-meta"></p>
+    </div>
+    <div class="pt-downloads" id="pt-downloads"></div>
+    <p class="pt-hint" id="pt-hint"></p>
+    <ul class="pt-notes" id="pt-latest-notes"></ul>
+  </section>
+
+  <section id="pt-empty" class="pt-empty" hidden>
+    <h2>Henüz yayınlanmış sürüm yok</h2>
+    <p id="pt-empty-text">İlk sürüm yayınlandığında burada görünecek.</p>
+  </section>
+
+  <section id="pt-history-wrap" hidden>
+    <h2 class="pt-h2">Önceki sürümler</h2>
+    <div id="pt-history" class="pt-history"></div>
+  </section>
+
+  <section class="pt-install" id="pt-install" hidden>
+    <h2 class="pt-h2">Kurulum</h2>
+    <dl>
+      <dt>Android telefon / Google TV</dt>
+      <dd>İndirdiğin <code>.apk</code> dosyasını aç. İlk seferde tarayıcıya (ya da dosya yöneticisine) "bilinmeyen uygulamaları yükle" izni vermen istenir. Eski sürümün üzerine kurulur, verilerin korunur. Yeni telefonlar için <b>arm64</b>, Onvo Apollo gibi 32 bit TV'ler ve eski cihazlar için <b>armeabi-v7a</b>.</dd>
+      <dt>Windows</dt>
+      <dd>ZIP'i bir klasöre çıkar, <code>mobile_ip_tv.exe</code>'yi çalıştır.</dd>
+      <dt>Linux</dt>
+      <dd>Arşiv klasörsüz çıkar, önce bir klasör aç: <code>mkdir prism &amp;&amp; tar -xzf Prism-IPTV-Linux-x64.tar.gz -C prism &amp;&amp; prism/run.sh</code></dd>
+    </dl>
+    <p class="pt-foot">Uygulama güncellemeleri de bu sayfanın verisini (<a href="/prism-tv/releases.json">releases.json</a>) okur; bu sayfa her sürümde otomatik güncellenir.</p>
+  </section>
+</main>
+<script src="/prism-tv/prism-tv.js"></script>
+</body>
+</html>
